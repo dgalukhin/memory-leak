@@ -1,0 +1,22 @@
+target
+.settings
+.classpath
+.project
+.vlt
+.checkstyle
+.pmd
+.pmdruleset.xml
+shop-frontend/app/bower_components
+shop-frontend/node_modules
+node_modules
+.idea
+.sass-cache
+.tmp
+aem
+dist
+reports
+docs
+#ignore IDEA 
+*.iml
+#for Jenkins
+.repository/
