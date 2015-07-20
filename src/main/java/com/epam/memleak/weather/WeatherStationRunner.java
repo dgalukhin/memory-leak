@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.epam.memleak.util.DataGenerator;
-import com.epam.memleak.weather.display.BriefDisplay;
+import com.epam.memleak.weather.display.SimpleDataHolder;
 import com.epam.memleak.weather.model.City;
 import com.epam.memleak.weather.model.CityDateEntry;
 import com.epam.memleak.weather.model.WeatherData;
@@ -17,9 +17,9 @@ import com.epam.memleak.weather.user.UserRunnable;
 // user not runnable
 class UserGeneratorRunnable implements Runnable {
     
-    private BriefDisplay d;
+    private SimpleDataHolder d;
     
-    public UserGeneratorRunnable(BriefDisplay d) {
+    public UserGeneratorRunnable(SimpleDataHolder d) {
         this.d = d;
     }
 
@@ -40,9 +40,9 @@ class UserGeneratorRunnable implements Runnable {
 // user runnable
 class RunnableUserGeneratorRunnable implements Runnable {
 
-    private BriefDisplay d;
+    private SimpleDataHolder d;
 
-    public RunnableUserGeneratorRunnable(BriefDisplay d) {
+    public RunnableUserGeneratorRunnable(SimpleDataHolder d) {
         this.d = d;
     }
 
@@ -114,7 +114,7 @@ public class WeatherStationRunner {
 
         WeatherSource source = new WeatherSource();
 
-        BriefDisplay briefDisplay = new BriefDisplay(source);
+        SimpleDataHolder briefDisplay = new SimpleDataHolder(source);
 
         new Thread(new WeatherGeneratorRunnable(source)).start();
         //new Thread(new RunnableUserGeneratorRunnable(briefDisplay)).start();

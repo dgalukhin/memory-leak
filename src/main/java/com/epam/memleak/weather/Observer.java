@@ -5,6 +5,6 @@ import com.epam.memleak.weather.model.WeatherData;
 
 public interface Observer {
 
-    void update(CityDateEntry cde, WeatherData weatherData);
+    void update(CityDateEntry cityDateEntry, WeatherData weatherData);
 
 }

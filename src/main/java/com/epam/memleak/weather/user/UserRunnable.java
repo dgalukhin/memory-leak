@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.epam.memleak.util.DataGenerator;
-import com.epam.memleak.weather.display.BriefDisplay;
+import com.epam.memleak.weather.display.SimpleDataHolder;
 import com.epam.memleak.weather.model.City;
 import com.epam.memleak.weather.model.WeatherData;
 
@@ -14,10 +14,10 @@ public class UserRunnable implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRunnable.class);
 
-    private BriefDisplay briefDisplay;
+    private SimpleDataHolder briefDisplay;
     private int id;
 
-    public UserRunnable(BriefDisplay display) {
+    public UserRunnable(SimpleDataHolder display) {
         id = DataGenerator.geterateRandomId();
         Thread.currentThread().setName("User-Thread-" + id);
         briefDisplay = display;
