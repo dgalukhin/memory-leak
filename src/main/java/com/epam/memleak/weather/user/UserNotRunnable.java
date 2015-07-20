@@ -26,14 +26,18 @@ public class UserNotRunnable {
         this.briefDisplay = briefDisplay;
     }
 
+
     public void watchWeather() {
         City c = DataGenerator.generateCity();
         Date d = DataGenerator.generateDate();
         WeatherData wd = briefDisplay.display(c, d);
 
         DateFormat dateFormat = (DateFormat) df.get();
-        System.out.println("User ID: " + id + ", is trying to get weather data....");
+        System.out.println("User ID: " + id + ", gets weather data.");
 
     }
 
+    public int getId() {
+        return id;
+    }
 }

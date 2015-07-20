@@ -24,14 +24,12 @@ public class BriefDisplay implements Observer, DisplayElement{
         weatherSource.registerObserver(this);
     }
 
-    @Override
     public WeatherData display(City city, Date date) {
         CityDateEntry cityDateEntry = new CityDateEntry(city, date);
         WeatherData weatherData = cache.get(cityDateEntry);
         return weatherData;
     }
 
-    @Override
     public void update(CityDateEntry cde, WeatherData weatherData) {
         if (!cache.containsKey(cde)) {
             cache.put(cde, weatherData);

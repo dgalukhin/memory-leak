@@ -16,17 +16,14 @@ public class WeatherSource implements Subject{
         observerList = new ArrayList<Observer>();
     }
 
-    @Override
     public void registerObserver(Observer o) {
         observerList.add(o);
     }
 
-    @Override
     public void removeObserver(Observer o) {
         observerList.remove(o);
     }
 
-    @Override
     public void notifyObservers() {
         for (Observer obs: observerList) {
             obs.update(cde, weatherData);

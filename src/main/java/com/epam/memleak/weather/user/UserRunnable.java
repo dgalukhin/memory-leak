@@ -15,33 +15,29 @@ public class UserRunnable implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRunnable.class);
 
     private BriefDisplay briefDisplay;
-    private volatile boolean isWatching = true;
+    private int id;
 
     public UserRunnable(BriefDisplay display) {
+        id = DataGenerator.geterateRandomId();
+        Thread.currentThread().setName("User-Thread-" + id);
         briefDisplay = display;
     }
 
     private void watchWeather() {
+
         City c = DataGenerator.generateCity();
         Date d = DataGenerator.generateDate();
-        System.out.println("city: " + c + "date: " + d);
-        while (isWatching) {
-            try {
-                WeatherData wd = briefDisplay.display(c, d);
-                System.out.println(wd);
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        WeatherData wd = briefDisplay.display(c, d);
+        LOGGER.info("User ID: {}, display weather: {}", id, wd);
     }
 
-    public void killUser() {
-        isWatching = false;
+    public void run() {
+        watchWeather();
     }
 
     @Override
-    public void run() {
-        watchWeather();
+    protected void finalize() throws Throwable {
+        LOGGER.info("finialize id: {}", id);
+        super.finalize();
     }
 }
