@@ -1,44 +1,26 @@
-package com.epam.memleak.util;
+package com.epam.memleak2.util;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import com.epam.memleak.weather.model.City;
 import com.epam.memleak2.model.Address;
 
-public class DataGenerator {
+public class Generator {
 
-    private static final int CITY_ABBREVIATION_SIZE = 2;
     private static final int ADDRESS_ABBREVIATION_SIZE = 2;
-    private static final int TEMP_RANGE = 40;
-    private static final int TEMP_OFFSET = 15;
+    private static final int TEMP_RANGE = 15;
+    private static final int TEMP_OFFSET = 10;
     private static final int PRESSURE_RANGE = 70;
     private static final int PRESSURE_OFFSET = 980;
     private static final int HUMIDITY_RANGE = 54;
     private static final int HUMIDITY_OFFSET = 45;
-    private static final int DATE_FROM = 2014;
-    private static final int DATE_TO = 2015;
-    private static final int ID_RANGE = 10000; 
 
     private static final Random random = new Random();
     private static final char[] capitalLetters = "QWERTYUIOPASDFGHJKLZXCVBNM".toCharArray();
 
-    public static City generateCity() {
-        char[] result = new char[CITY_ABBREVIATION_SIZE];
-        for (int i = 0; i < CITY_ABBREVIATION_SIZE; i++) {
-            int randomInt = random.nextInt(capitalLetters.length);
-            result[i] = capitalLetters[randomInt];
-        }
-        City city = new City();
-        city.setCityAbbreviation(new String(result));
-        return city;
-    }
-
-    // used in v2
     public static Address generateAddress() {
         char[] result = new char[ADDRESS_ABBREVIATION_SIZE];
         for (int i = 0; i < ADDRESS_ABBREVIATION_SIZE; i++) {
@@ -50,16 +32,8 @@ public class DataGenerator {
         return addr;
     }
 
-    public static int geterateRandomId() {
-        return random.nextInt(ID_RANGE);
-    }
-
-    public static int generateTemp() {
-        return random.nextInt(TEMP_RANGE) - TEMP_OFFSET;
-    }
-
     public static double generateTemperature() {
-        return random.nextDouble();
+        return (random.nextDouble()) * TEMP_RANGE + TEMP_OFFSET;
     }
 
     public static int generatePressure() {
@@ -70,18 +44,6 @@ public class DataGenerator {
         return random.nextInt(HUMIDITY_RANGE) + HUMIDITY_OFFSET;
     }
 
-    // used in v2
-    /*
-    public static Date generateDate() {
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTimeInMillis(0);
-        int year = randBetween(DATE_FROM, DATE_TO);
-        gc.set(gc.YEAR, year);
-        int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
-        gc.set(gc.DAY_OF_YEAR, dayOfYear);
-        return gc.getTime();
-    }
-    */
     public static Date generateDate() {
         GregorianCalendar gc = new GregorianCalendar();
         gc.setTimeInMillis(0);
