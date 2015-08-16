@@ -8,27 +8,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.epam.memleak2.model.Address;
-import com.epam.memleak2.model.Weather;
+import com.epam.memleak2.model.WeatherForecast;
 import com.epam.memleak2.util.Generator;
 
 public class WeatherStation {
 
     private Address addr;
-    private Map<Date, Weather> forecast = new HashMap<Date, Weather>();
+    private Map<Date, WeatherForecast> forecast = new HashMap<Date, WeatherForecast>();
     private static final Logger LOG = LoggerFactory.getLogger(WeatherStation.class);
 
-    public Weather getWeather(Date date) {
+    public WeatherForecast getWeather(Date date) {
         if (forecast.containsKey(date)) {
             return forecast.get(date);
         } else {
-            Weather weather = generateWeatherReport();
+            WeatherForecast weather = generateWeatherReport();
             forecast.put(date, weather);
             return weather;
         }
     }
 
-    private Weather generateWeatherReport() {
-        Weather weather = new Weather();
+    private WeatherForecast generateWeatherReport() {
+        WeatherForecast weather = new WeatherForecast();
         weather.setTemp(Generator.generateTemperature());
         weather.setPressure(Generator.generatePressure());
         weather.setHumidity(Generator.generateHumidity());

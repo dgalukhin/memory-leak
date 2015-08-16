@@ -1,6 +1,15 @@
 package com.epam.memleak2.model;
 
-public class Weather {
+import java.text.DecimalFormat;
+
+public class WeatherForecast {
+
+    private static final ThreadLocal<DecimalFormat> dateFormatHolder = new ThreadLocal<DecimalFormat>() {
+        @Override
+        protected DecimalFormat initialValue() {
+            return new DecimalFormat("#0.0");
+        }
+    };
 
     private double temp;
     private int pressure;
@@ -45,7 +54,7 @@ public class Weather {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Weather other = (Weather) obj;
+        WeatherForecast other = (WeatherForecast) obj;
         if (humidity != other.humidity)
             return false;
         if (pressure != other.pressure)
@@ -58,7 +67,7 @@ public class Weather {
 
     @Override
     public String toString() {
-        return "Weather [temp=" + temp + ", pressure=" + pressure
-                + ", humidity=" + humidity + "]";
+        return "temp: " + dateFormatHolder.get().format(temp) + ", pressure: " + pressure
+                + ", humidity: " + humidity;
     }
 }

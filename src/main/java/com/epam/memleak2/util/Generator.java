@@ -8,15 +8,9 @@ import java.util.Set;
 
 import com.epam.memleak2.model.Address;
 
-public class Generator {
+import static com.epam.memleak2.Constants.*;
 
-    private static final int ADDRESS_ABBREVIATION_SIZE = 2;
-    private static final int TEMP_RANGE = 15;
-    private static final int TEMP_OFFSET = 10;
-    private static final int PRESSURE_RANGE = 70;
-    private static final int PRESSURE_OFFSET = 980;
-    private static final int HUMIDITY_RANGE = 54;
-    private static final int HUMIDITY_OFFSET = 45;
+public class Generator {
 
     private static final Random random = new Random();
     private static final char[] capitalLetters = "QWERTYUIOPASDFGHJKLZXCVBNM".toCharArray();
@@ -51,6 +45,11 @@ public class Generator {
         int dayOfYear = randBetween(1, 7);
         gc.set(gc.DAY_OF_YEAR, dayOfYear);
         return gc.getTime();
+    }
+
+    public static CommandEnum generateCommand() {
+        int pick = random.nextInt(CommandEnum.values().length);
+        return CommandEnum.values()[pick];
     }
 
     public static int randBetween(int start, int end) {

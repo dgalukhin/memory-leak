@@ -3,22 +3,25 @@ package com.epam.memleak2.station;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.epam.memleak2.model.Location;
-import com.epam.memleak2.model.Weather;
+import com.epam.memleak2.model.Entry;
+import com.epam.memleak2.model.WeatherForecast;
 
 public class WeatherStationCache {
 
-    private Map<Location, Weather> cache = new HashMap<Location, Weather>();
+    private Map<Entry, WeatherForecast> cache = new HashMap<Entry, WeatherForecast>();
 
-    public Weather lookFor(Location location) {
-        System.out.println("WeatherStationCache, size: " + cache.size());
+    public boolean contains(Entry location) {
+        return cache.containsKey(location);
+    }
+
+    public WeatherForecast get(Entry location) {
         if (cache.containsKey(location)) {
             return cache.get(location);
         }
         return null;
     }
 
-    public void save(Location location, Weather weather) {
+    public void save(Entry location, WeatherForecast weather) {
         cache.put(location, weather);
     }
 
