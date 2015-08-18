@@ -2,7 +2,7 @@ package com.epam.memleak.model;
 
 import java.text.DecimalFormat;
 
-import static com.epam.memleak.Constants.*;
+import static com.epam.memleak.constants.Constants.*;
 
 public class WeatherForecast {
 

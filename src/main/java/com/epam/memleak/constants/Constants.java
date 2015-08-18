@@ -1,4 +1,4 @@
-package com.epam.memleak;
+package com.epam.memleak.constants;
 
 public class Constants {
 

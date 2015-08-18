@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.epam.memleak.model.Address;
 
-import static com.epam.memleak.Constants.*;
+import static com.epam.memleak.constants.Constants.*;
 
 public class Generator {
 

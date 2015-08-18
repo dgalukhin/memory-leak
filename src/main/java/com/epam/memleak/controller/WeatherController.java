@@ -6,8 +6,8 @@ import com.epam.memleak.model.WeatherForecast;
 
 public interface WeatherController {
 
-    WeatherForecast getWeather(Entry entry);
+    WeatherForecast getWeather(final Entry entry);
 
-    Alert getAlerts(Entry entry);
+    Alert getAlerts(final Entry entry);
 
 }

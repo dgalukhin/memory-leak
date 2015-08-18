@@ -6,8 +6,8 @@ import com.epam.memleak.model.WeatherForecast;
 
 public interface WeatherStationService {
 
-    WeatherForecast getWeather(Entry location);
+    WeatherForecast getWeather(final Entry location);
 
-    Alert getAlerts(Entry location);
+    Alert getAlerts(final Entry location);
 
 }

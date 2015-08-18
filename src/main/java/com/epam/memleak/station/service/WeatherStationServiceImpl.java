@@ -15,7 +15,7 @@ import com.epam.memleak.station.WeatherStation;
 import com.epam.memleak.station.WeatherStationCache;
 import com.epam.memleak.util.Generator;
 
-import static com.epam.memleak.Constants.*;
+import static com.epam.memleak.constants.Constants.*;
 
 public class WeatherStationServiceImpl implements WeatherStationService {
 
